@@ -1,6 +1,5 @@
-const dotenv = require("dotenv");
-dotenv.config({ path: "../../config.env" });
 const mongoist = require("mongoist");
+const dotenv = require("dotenv").config();
 
 const uri = process.env.DATABASE;
 const options = {
