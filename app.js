@@ -2,7 +2,6 @@ const express = require("express");
 const app = express();
 const mongoist = require("mongoist");
 const musicRouter = require("./routes/musicRoutes");
-const dotenv = require("dotenv").config();
 
 app.use(express.static("public"));
 
