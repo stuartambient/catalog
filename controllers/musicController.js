@@ -37,9 +37,8 @@ exports.getTitles = async (req, res) => {
       console.log(documents);
       res.status(200).send({
         message: 'success',
-        data: {
-          documents,
-        },
+
+        documents,
       });
     }
   } catch (err) {
