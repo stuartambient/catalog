@@ -1,6 +1,9 @@
+/* eslint-disable no-console */
+/* eslint-disable arrow-parens */
 const { workerData, parentPort } = require('worker_threads');
 const db = require('../utils/db');
 
+// eslint-disable-next-line no-shadow
 const handleInsert = async workerData => {
   /* const insert =  */ await db.books
     .insert(workerData)
