@@ -8,5 +8,5 @@ const router = express.Router();
 
 router.get('/setTitles', musicController.setTitles);
 router.get('/getTitles', musicController.getTitles);
-
+router.get('/getLocations', musicController.getLocations);
 module.exports = router;

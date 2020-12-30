@@ -3,6 +3,7 @@
 /* eslint-disable no-console */
 /* eslint-disable quotes */
 const fs = require('fs');
+const child = require('child_process');
 const db = require('../utils/db');
 
 const wrapAsync = require('../utils/wrapAsync');
@@ -47,4 +48,22 @@ exports.getTitles = async (req, res) => {
   } catch (err) {
     throw new Error('something went wrong');
   }
+};
+
+function getDrives() {
+  return new Promise((resolve, reject) => {
+    child.exec('wmic logicaldisk get name', (error, stdout) => {
+      if (error) reject(error);
+      resolve(
+        stdout
+          .split('\r\r\n')
+          .filter(value => /[A-Za-z]:/.test(value))
+          .map(value => value.trim())
+      );
+    });
+  });
+}
+
+exports.getLocations = (req, res) => {
+  getDrives().then(results => console.log('results: ', results));
 };
